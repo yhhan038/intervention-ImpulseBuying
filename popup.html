@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1-strict.dtd">
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title> WELCOME </title>
+        <style>
+            body {
+                width:800px;
+                height:400px;
+            }
+            #salientCost {
+                font-size:1rem;
+            }
+        </style>
+        <!-- You must include this JavaScript file -->
+        <script src="jquery-3.5.1.js"></script>
+        <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    </head>
+    <body>
+    <div class="container" id="introduction">
+        <div class="jumbotron" >
+            <div id="salientCost" style="display:none">
+                <h2 class="display-4" id="cost">0 원</h2>
+                <div id="coffee"></div>
+                <div id="work"></div>
+                <div id="chicken"></div>
+                <div id="jjajang"></div>
+                <br>
+                <div class="text-right"> <button type="button" class="btn btn-warning" id="s-quit">Quit to Buy</button>
+                <button type="button" class="btn btn-info" id="s-done"> Next </button></div><br>
+            </div>
+
+
+            <div id="reflection" style="display:none">
+                <p class="lead">다음 질문에 답해주십시오.</p><br>
+                Q1. 현재 가지고 있는 물품 중 이 물건을 대체할 수 있는 것들을 적어보세요.<br>
+                <textarea id="reflection-ans1" rows="2" cols="80"></textarea> <br><br>
+                Q2. 이 물건이 현재 얼마나 필요한지 점수를 매겨주세요. <br>
+                <div id="reflection-btn" class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" id="btn-1" name="1" class="btn btn-outline-dark button4">1</button>
+                    <button type="button" id="btn-2" name="2" class="btn btn-outline-dark button4">2</button>
+                    <button type="button" id="btn-3" name="3" class="btn btn-outline-dark button4">3</button>
+                    <button type="button" id="btn-4" name="4" class="btn btn-outline-dark button4">4</button>
+                    <button type="button" id="btn-5" name="5" class="btn btn-outline-dark button4">5</button>
+                    <button type="button" id="btn-6" name="6" class="btn btn-outline-dark button4">6</button>
+                    <button type="button" id="btn-7" name="7" class="btn btn-outline-dark button4">7</button>
+                </div>
+                <div id="reflection-ans2" style="display:none"></div><br><br>
+                Q3. 이 물건을 사야하는 이유를 5가지 적어주세요.<br>
+                <textarea id="reflection-ans3" rows="2" cols="80"></textarea> <br><br>
+                <div class="text-right"> <button type="button" class="btn btn-warning" id="r-quit">Quit to Buy</button>
+                 <button type="button" class="btn btn-info" id="r-done"> Next </button></div><br>
+            </div>
+
+
+            <div id="desireControl" style="display:none">
+                <p class="lead">다음 질문에 답해주십시오.</p><br>
+                Q1. 이 물건에 대한 부정적 리뷰를 찾아보고, 그 내용을 적어주세요.<br>
+                <textarea id="desire-ans1" rows="2" cols="80"></textarea> <br><br>
+                Q2. 스스로 생각했을 때, 이 물건의 예상되는 단점을 적어주세요. <br>
+                <textarea id="desire-ans2" rows="2" cols="80"></textarea> <br><br>
+                <div class="text-right"> <button type="button" class="btn btn-warning" id="d-quit">Quit to Buy</button>
+                 <button type="button" class="btn btn-info" id="d-done"> Next </button></div><br>
+            </div>
+
+            <div id="postponement" style="display:none">
+                <p class="lead"> 5분 동안 쉬는 시간을 갖겠습니다.</p>
+                쉬는 시간 동안, 유튜브에서 자유롭게 동영상을 시청해주세요. <br>
+                <strong><div id="timeLeft"></div></strong><br>
+
+                <a href="http://youtube.com" target="_blank">유튜브 링크</a>
+                <div class="text-right"> <button type="button" class="btn btn-warning" id="p-quit">Quit to Buy</button>
+                 <button type="button" class="btn btn-info" id="p-done"> Next </button></div><br>
+            </div>
+
+            <div id="finish" style="display:none">
+                <p class="lead">모든 Intervention 을 체험해 보았습니다. <br> 아래 버튼을 누르고 실험페이지로 돌아가 task를 계속해서 진행해주십시오.</p>
+                <button type="button" class="btn btn-info" id="task-done"> Finish </button></div><br>
+            <input type="text" id="dp_order" style="display:none"/>
+            </div>
+        </div>
+    </div>
+    </body>
+        <script src="script.js"></script>
+</html>

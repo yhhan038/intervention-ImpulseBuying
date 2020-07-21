@@ -1,0 +1,28 @@
+  {
+    "name": "Intervention",
+    "version": "1.0",
+    "description": "Build an Extension!",
+    "manifest_version": 2,
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+    "browser_action": {
+      "default_icon": "icon.png",
+      "default_popup": "popup.html"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["jquery-3.5.1.js","content.js"]
+      }
+    ],
+    "web_accessible_resources": ["popup.html", "*.js", "*.txt"],
+    "permissions": [
+      "activeTab",
+      "storage",
+      "file://*",
+      "declarativeContent",
+      "tabs"
+    ]
+  }
