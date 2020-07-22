@@ -14,7 +14,8 @@ window.onload = function() {
             popup_url = chrome.extension.getURL('popup.html');
               // alert(popup_url);
               document.querySelector('li.cart.more').style.display = "none";
-              window.open(popup_url, "Intervention", "width=780,height=600. left=1800, top=100");});
+              var intervention = window.open(popup_url, "Intervention", "width=780,height=600. left=1800, top=100");
+              });
 
         var order_string = shuffle(display_order);
             chrome.storage.sync.set({order:order_string}, function() {

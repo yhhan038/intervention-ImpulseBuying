@@ -48,11 +48,8 @@ function display () {
         var timer = setInterval(function() {
         clock--;
         $('#timeLeft').html("Time Left : " + clock);
-        if(clock<=0) {
-            clearInterval(timer);
-            hide_article();
-        }
-        if(clock<=600) { // 120초 경과후부터는 넘길 수 있음
+        if(clock<=595) { // 120초 경과후부터는 넘길 수 있음
+        play();
         $('#p-done').prop("disabled", false);
         }
         }, 1000);
@@ -148,6 +145,7 @@ document.getElementById("task-done").addEventListener("click",
     chrome.storage.sync.set({done:true});
 
 }, false);
+
 
 chrome.storage.sync.get(function(data) {
     var price_txt = data.price;
@@ -288,3 +286,8 @@ function validCheck2 () {
     return true;
 };
 
+function play() {
+        var audio = new Audio(
+        'https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3');
+         audio.play();
+        }
