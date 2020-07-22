@@ -1,14 +1,3 @@
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-
-        if(request.state == 'done') {
-            alert("Requested");
-            document.querySelector('li.cart.more').style.display = "block";
-            document.querySelector('button.prod-buy-btn').style.display = "block";
-            sendResponse({result: "success"});
-        }
-});
-
 window.onload = function() {
 
         var productPrice = document.getElementsByClassName("total-price")[0].innerText;
@@ -27,20 +16,14 @@ window.onload = function() {
               document.querySelector('li.cart.more').style.display = "none";
               window.open(popup_url, "Intervention", "width=780,height=600. left=1800, top=100");});
 
-
         var order_string = shuffle(display_order);
             chrome.storage.sync.set({order:order_string}, function() {
             console.log("Randomize Order");});
         }
 
-        chrome.runtime.onMessage.addListener(
-            function(request, sender, sendResponse) {
-                console.log("Requested");
-                document.querySelector('li.cart.more').style.display = "block";
-                document.querySelector('button.prod-buy-btn').style.display = "block";
-                sendResponse({result: "success"});
-        });
-        console.log("add listener");
+        chrome.storage.sync.set({done:false}, function() {
+            console.log("done false");});
+
 }
 var display_order = ['d', 's', 'p', 'r']
 
@@ -59,3 +42,31 @@ function shuffle(a) {
     }
     return order;
 }
+
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse)    {
+    if(request.command == 'done'){
+        console.log('okok');
+        document.querySelector('li.cart.more').style.display = "block";
+        document.querySelector('button.prod-buy-btn').style.display = "block";
+        sendResponse({result: "success"});
+    }
+});
+
+/*
+chrome.runtime.onMessageExternal.addListener(
+ function(request, sender, sendResponse) {
+  console.log(request.command);
+  sendResponse({result: "success"});
+  });
+
+  */
+chrome.storage.onChanged.addListener(function (changes, areaName) {
+        console.log(changes['done']);
+          for (key in changes) {
+          if (key == 'done') {
+            document.querySelector('li.cart.more').style.display = "block";
+            document.querySelector('button.prod-buy-btn').style.display = "block";
+          }
+          }
+     });

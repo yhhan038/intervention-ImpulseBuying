@@ -21,8 +21,8 @@
     "permissions": [
       "activeTab",
       "storage",
+      "http://*/*", "https://*/*",
       "file://*",
-      "declarativeContent",
-      "tabs"
+      "declarativeContent"
     ]
   }

@@ -1,6 +1,6 @@
 // product detail page에서 가격 가져오기
 //chrome.tabs.executeScript(null, {file: "content-script.js"});
-// ulr : chrome-extension://kgejmnbdipjoaefkemjgohfkdhahlkpi/popup.html
+// url: chrome-extension://kgejmnbdipjoaefkemjgohfkdhahlkpi/popup.html
 
 /*
 chrome.tabs.executeScript({
@@ -12,23 +12,11 @@ chrome.tabs.executeScript({
     cart.addEventListener('click', function() {
         alert('Cart Clicked');
     });
-});*/
-
-/*
-document.addEventListener('DOMContentLoaded', function() {
-    var cart = document.querySelector('.prod-cart-btn');
-    // onClick's logic below:
-    console.log(cart);
-    cart.addEventListener('click', function() {
-        alert('hello');
-    });
 });
-
+chrome.tabs.executeScript(null, {
+code : 'var price = document.getElementsByClassName("total-price")[0].innerText;alert(price);'
+});
 */
-
-
-
-
 
 var order = '';
 function first_display() {
@@ -42,10 +30,6 @@ chrome.storage.sync.get(function(data) {
     first_display();
     });
 
-
-
-//chrome.storage.sync.get(function(data) {. $('#dp_order')val(data.order);
-//    console.log("order : " + order);});
 
 function display () {
 
@@ -136,22 +120,34 @@ $('#d-done').click(function() {
     else
         alert("모든 질문에 답해주세요.");
 });
+/*
+$('#task-done').click(function() {
+    //download();
+
+     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {command: "done"}, function(response) {
+            console.log(response.result);
+        });
+    });
+
+    console.log("click!");
+});
 
 $('#task-done').click(function() {
     //download();
 
-    //chrome.tabs.executeScript({
-    //code : 'document.querySelector("li.cart.more").style.display = "block";'
-    //}, function(result) {});
+    var data = { type: "FROM_PAGE", command: "done" };
+    this.postMessage(data, "*");
 
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {state: "done"}, function(response){
-        console.log(response.result);
-        });
-    });
+    console.log("click!");
 });
+*/
+document.getElementById("task-done").addEventListener("click",
+    function() {
+    console.log("click!");
+    chrome.storage.sync.set({done:true});
 
-
+}, false);
 
 chrome.storage.sync.get(function(data) {
     var price_txt = data.price;
