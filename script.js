@@ -19,6 +19,8 @@ code : 'var price = document.getElementsByClassName("total-price")[0].innerText;
 */
 
 var order = '';
+var alarm = new Audio(
+        'https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3');
 function first_display() {
     order = $('#dp_order').val();
     console.log("order : " + order);
@@ -49,7 +51,7 @@ function display () {
         clock--;
         $('#timeLeft').html("Time Left : " + clock);
         if(clock<=595) { // 120초 경과후부터는 넘길 수 있음
-        play();
+            alarm.play();
         $('#p-done').prop("disabled", false);
         }
         }, 1000);
@@ -104,6 +106,7 @@ $('#r-done').click(function() {
 });
 $('#p-done').click(function() {
     $('#postponement').css("display", "none");
+    alarm.pause();
     order = order.slice(1);
     display();
 });
@@ -240,10 +243,6 @@ document.querySelector('#desire-ans2').addEventListener("change", function() {
 
 
 
-//window.close();
-
-
-
 function download() {
     var data = $('#reflection-ans1').val() + "//" + $('#reflection-ans2').text() + "//" + $('#reflection-ans3').val() + "//" + $('#desire-ans1').val() + "//" + $('#desire-ans2').val();
     var filename = "/data/test.txt";
@@ -286,8 +285,3 @@ function validCheck2 () {
     return true;
 };
 
-function play() {
-        var audio = new Audio(
-        'https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3');
-         audio.play();
-        }
