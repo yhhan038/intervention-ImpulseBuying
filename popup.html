@@ -14,6 +14,8 @@
         </style>
         <!-- You must include this JavaScript file -->
         <script src="jquery-3.5.1.js"></script>
+        <script src="bootstrap-4.3.1-dist/js/popper.js"></script>
+        <script src="bootstrap-4.3.1-dist/js/popper.min.js"></script>
         <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
     </head>
@@ -22,10 +24,36 @@
         <div class="jumbotron" >
             <div id="salientCost" style="display:none">
                 <h2 class="display-4" id="cost">0 원</h2>
-                <div id="coffee"></div>
-                <div id="work"></div>
-                <div id="chicken"></div>
-                <div id="jjajang"></div>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true" id="drop-btn">Select
+                        <span class="caret"></span></button>
+                    <ul id="drop-all"class="dropdown-menu" role="menu" aria-labelledby="searchType">
+                        <li> <a role="menuitem" href="#" value='jjajang'>자장면</a></li>
+                        <li> <a role="menuitem" href="#" value='ramen'>라면</a></li>
+                        <li> <a role="menuitem" href="#" value="pork">삼겹살</a></li>
+                        <li> <a role="menuitem" href="#" value="rice">햇반</a></li>
+                        <li> <a role="menuitem" href="#" value="triangle">삼각김밥</a></li>
+                        <li> <a role="menuitem" href="#" value="gimbab">김밥</a></li>
+                        <li> <a role="menuitem" href="#" value="water">생수</a></li>
+                        <li> <a role="menuitem" href="#" value="alcohol">소주/맥주</a></li>
+                        <li> <a role="menuitem" href="#" value="schoolfood">학식</a></li>
+                        <li> <a role="menuitem" href="#" value="car">자동차 연비</a></li>
+                        <li> <a role="menuitem" href="#" value="game">PC방</a></li>
+                        <li> <a role="menuitem" href="#" value="sing">코인노래방</a></li>
+                        <li> <a role="menuitem" href="#" value="traffic">대중교통</a></li>
+                        <li> <a role="menuitem" href="#" value="tissue">휴지</a></li>
+                        <li> <a role="menuitem" href="#" value="travel">여행</a></li>
+                        <li> <a role="menuitem" href="#" value="airpod">에어팟</a></li>
+                        <li> <a role="menuitem" href="#" value="dorm">기숙사비</a></li>
+                        <li> <a role="menuitem" href="#" value="rent">월세</a></li>
+                    </ul>
+                </div>
+                <hr>
+                <div id="showingCost">
+                    <div id="work"></div>
+                    <div id="coffee"></div>
+                    <div id="chicken"></div>
+                </div>
                 <br>
                 <div class="text-right"> <button type="button" class="btn btn-warning" id="s-quit">Quit to Buy</button>
                 <button type="button" class="btn btn-info" id="s-done"> Next </button></div><br>
