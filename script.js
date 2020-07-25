@@ -54,7 +54,7 @@ function display () {
 
     timer = setInterval(function() {
         clock--;
-        $('#timeLeft').html("Time Left : " + clock);
+        $('#timeLeft').html("Time Left (s) : " + clock);
         if(0 < clock <= 595) { // 120초 경과후부터는 넘길 수 있음
             alarm.play();
         $('#p-done').prop("disabled", false);
@@ -67,8 +67,6 @@ function display () {
         $('#salientCost').css("display", "block");
     }
 }
-
-
 
 
 
@@ -157,6 +155,13 @@ $('.btn-warning').on('click', function() {
     chrome.storage.sync.set({quit:true});
     download();
     window.close();
+});
+
+$('#timer-btn').mousedown(function() {
+   $('#timeLeft').css("display", "block");
+});
+$('#timer-btn').mouseup(function() {
+   $('#timeLeft').css("display", "none");
 });
 
 

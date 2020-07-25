@@ -94,9 +94,13 @@
 
             <div id="postponement" style="display:none">
                 <p class="lead"> 10분 동안 쉬는 시간을 갖겠습니다.</p>
-                쉬는 시간 동안, 아래 링크로 이동해서 게임을 즐겨주세요. <br>
-                <strong><div id="timeLeft"></div></strong><br>
+                <p class="lead">쉬는 시간 동안, 아래 링크로 이동해서 게임을 즐겨주세요.</p> <br>
+                <div class="row">
+                    <div class="col-md-3"> <button type="button" class="btn btn-primary" id="timer-btn">Show Timer</button> </div>
+                    <div class="col-md-6"> <strong><p id="timeLeft" style="display:none"></p></strong><br> </div>
+                </div>
 
+                <br>
                 <a href="https://tetris.com/games-content/sanrio01/index-mobile.php" target="_blank">게임 링크</a>
                 <div class="text-right"> <button type="button" class="btn btn-warning" id="p-quit">Quit to Buy</button>
                  <button type="button" class="btn btn-info" id="p-done"> Next </button></div><br>
