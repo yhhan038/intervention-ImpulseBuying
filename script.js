@@ -231,7 +231,7 @@ chrome.storage.sync.get(function(data) {
     sing_msg = ["이 금액이면 ", "코인 노래방에서 노래를 " + String((price/sing).toFixed(2)) + "곡 ", "부를 수 있습니다. (1곡 500 원)\n"];
     traffic_msg = ["이 금액이면 ", "대중교통을 " + String((price/traffic).toFixed(2)) + " 회 ", "이용할 수 있습니다. (버스/지하철 1,250 원)\n"];
     tissue_msg = ["이 금액이면 ", "두루마지 휴지 " + String((price/tissue).toFixed(2)) + " 개", "를 살 수 있습니다. (휴지 830 원)\n"];
-    travel_msg = ["이 금액을 ", String((travel/price).toFixed(2)) + " 번 아끼면 국내여", "을 갈 수 있습니다. (국내여행 경비 200,000 원)\n"];
+    travel_msg = ["이 금액을 ", String((travel/price).toFixed(2)) + " 번 아끼면 국내여행", "을 갈 수 있습니다. (국내여행 경비 200,000 원)\n"];
     airpod_msg = ["이 금액을 ", String((airpod/price).toFixed(2)) + " 번 아끼면 에어팟 프로", "를 살 수 있습니다. (에어팟 프로 251,000 원)\n"];
     dorm_msg = ["이 금액을 ", String((dorm/price).toFixed(2)) + " 번 아끼면 한달 치 기숙사비", "를 낼 수 있습니다. (기숙사비 1달 240,000 원)\n"];
     rent_msg = ["이 금액을 " , String((rent/price).toFixed(2)) + " 번 아끼면 한달 치 월세", "를 낼 수 있습니다. (월세 400,000 원)\n"];
