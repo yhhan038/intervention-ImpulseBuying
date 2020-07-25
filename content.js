@@ -24,6 +24,8 @@ window.onload = function() {
 
         chrome.storage.sync.set({done:false}, function() {
             console.log("done false");});
+        chrome.storage.sync.set({quit:false}, function() {
+            console.log("quit false");});
 
 }
 var display_order = ['d', 's', 'p', 'r']
@@ -65,9 +67,11 @@ chrome.runtime.onMessageExternal.addListener(
 chrome.storage.onChanged.addListener(function (changes, areaName) {
         console.log(changes['done']);
           for (key in changes) {
-          if (key == 'done') {
+            if (key == 'done') {
             document.querySelector('li.cart.more').style.display = "block";
             document.querySelector('button.prod-buy-btn').style.display = "block";
-          }
+            }
+            else if (key == 'quit')
+                window.history.back();
           }
      });

@@ -21,6 +21,7 @@ code : 'var price = document.getElementsByClassName("total-price")[0].innerText;
 var order = '';
 var alarm = new Audio(
         'https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3');
+alarm.volume = 0.03;
 function first_display() {
     order = $('#dp_order').val();
     console.log("order : " + order);
@@ -146,12 +147,18 @@ $('#task-done').click(function() {
 */
 document.getElementById("task-done").addEventListener("click",
     function() {
-    console.log("click!");
+    console.log("done");
     chrome.storage.sync.set({done:true});
-
+    download();
+    window.close();
 }, false);
+$('.btn-warning').on('click', function() {
+    console.log('quit');
+    chrome.storage.sync.set({quit:true});
+    download();
+    window.close();
+});
 
-var costList = []
 
 var jjajang_msg;
 var ramen_msg;
