@@ -17,8 +17,9 @@ chrome.tabs.executeScript(null, {
 code : 'var price = document.getElementsByClassName("total-price")[0].innerText;alert(price);'
 });
 */
-
+var row_num = 3;
 var order = '';
+var order_sum = [];
 var alarm = new Audio(
         'https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3');
 alarm.volume = 0.03;
@@ -32,8 +33,9 @@ chrome.storage.sync.get(function(data) {
     document.querySelector('#dp_order').value  = data.order
     first_display();
     });
-
-
+var k = 0;
+distraction_figure(document.getElementById('figure1'));
+distraction_figure(document.getElementById('figure2'));
 var CLOCK = 600;
 var clock = CLOCK;
 var timer = null;
@@ -50,18 +52,19 @@ function display () {
     else if (now == 'd')
         $('#desireControl').css("display", "block");
     else if (now == 'p') {
+    /*
         $('#p-done').prop("disabled", true);
-
-    timer = setInterval(function() {
+        timer = setInterval(function() {
         clock--;
         $('#timeLeft').html("Time Left (s) : " + clock);
         if(0 < clock <= 595) { // 120초 경과후부터는 넘길 수 있음
-            alarm.play();
+            //alarm.play();
         $('#p-done').prop("disabled", false);
         }
         }, 1000);
-
+*/
         $('#postponement').css("display", "block");
+
     }
     else if (now == 's')
         $('#salientCost').css("display", "block");
@@ -106,10 +109,15 @@ $('#r-done').click(function() {
 
 });
 $('#p-done').click(function() {
+    if (validCheck3()) {
     $('#postponement').css("display", "none");
-    clearInterval(timer);
+    //clearInterval(timer);
     order = order.slice(1);
     display();
+    }
+    else {
+        alert("답이 틀렸습니다. 다시 시도해보세요.");
+    }
 });
 $('#d-done').click(function() {
 
@@ -492,3 +500,64 @@ function validCheck2 () {
 
     return true;
 };
+
+
+
+function distraction_figure (target) {
+
+    for (var i=0; i<row_num; i++) {
+
+        var figure_order  = []
+        for (var j=0; j<10; j++)
+            figure_order[j] = Math.round(Math.random());
+
+        var array = figure_order;
+        var sum = array.reduce(function(a, b){
+        return a + b;
+        }, 0);
+       order_sum[k] = sum;
+       k++;
+        new_row = document.getElementById('dummy_row').cloneNode(true)
+        row = draw_figure(figure_order, new_row);
+        target.appendChild(row);
+    }
+}
+
+
+function draw_figure(figure_order, row) {
+
+
+    console.log(figure_order);
+    for (i=0; i< figure_order.length; i++) {
+        if (figure_order[i] == 1){
+            row.children[i].innerHTML = "<img src='r_square.png' class = 'img-responsive' width = '100%/'>";
+        }
+        else {
+            row.children[i].innerHTML = "<img src='b_circle.png' class = 'img-responsive' width = '100%/'>";
+            }
+
+    }
+    row.children[11].innerHTML = "<input type='text' style='width:30px'>";
+
+    return row;
+}
+
+function validCheck3 ()  {
+    var table1 = document.getElementById ('figure1');
+    var table2 = document.getElementById ('figure2');
+    for (var i=0; i<row_num; i++)
+    {
+       var ans = table1.children[i+1].children[11].children[0].value;
+       if (ans != order_sum[i])
+            return false;
+    }
+    for (var i=0; i<row_num; i++)
+    {
+       var ans = table2.children[i].children[11].children[0].value;
+       if (ans != order_sum[i+row_num])
+            return false;
+    }
+
+    return true;
+
+}
